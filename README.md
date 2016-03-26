@@ -4,7 +4,11 @@ AedeSpot
 [![Code Health](https://landscape.io/github/henriquenogueira/aedes/master/landscape.svg?style=flat)](https://landscape.io/github/henriquenogueira/aedes/master)
 [![codecov.io](https://codecov.io/github/henriquenogueira/aedes/coverage.svg?branch=master)](https://codecov.io/github/henriquenogueira/aedes?branch=master)
 
-Monitoramento da Dengue
+Monitoramento da Dengue.
+
+* O site pode ser acessado [aqui](http://aedespot.herokuapp.com/).
+* Os endpoints da API REST estão [aqui](http://aedespot.herokuapp.com/api/).
+* A interface de administração está [aqui](http://aedespot.herokuapp.com/admin/).
 
 Ambiente
 ========
