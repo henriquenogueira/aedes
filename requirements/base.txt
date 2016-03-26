@@ -8,4 +8,6 @@ django-extensions==1.6.1
 django-test-without-migrations==0.4
 djangorestframework==3.3.3
 requests==2.9.1
+numpy
+scipy
 pytz
