@@ -1,4 +1,6 @@
 AedeSpot
+[![Code Health](https://landscape.io/github/henriquenogueira/aedes/master/landscape.svg?style=flat)](https://landscape.io/github/henriquenogueira/aedes/master)
+
 ====================================
 
 Monitoramento da Dengue
