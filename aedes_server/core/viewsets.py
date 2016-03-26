@@ -1,7 +1,7 @@
 from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.viewsets import GenericViewSet
-from .models import Report
-from .serializers import ReportSerializer
+from .models import Report, Cluster
+from .serializers import ReportSerializer, ClusterSerializer
 
 
 class ReportViewSet(GenericViewSet, CreateModelMixin, ListModelMixin):
@@ -10,3 +10,13 @@ class ReportViewSet(GenericViewSet, CreateModelMixin, ListModelMixin):
     '''
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
+
+
+class ClusterViewSet(GenericViewSet, ListModelMixin):
+    '''
+    Viewset that exposes the Clusters on a REST API.
+    '''
+    queryset = Cluster.objects.all()
+    serializer_class = ClusterSerializer
+
+

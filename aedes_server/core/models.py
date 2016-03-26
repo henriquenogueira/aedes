@@ -31,7 +31,7 @@ class Cluster(models.Model):
     '''
     Represents a cluster into the database.
     '''
-    label = models.IntegerField('etiquetta')
+    label = models.IntegerField('etiqueta', unique=True)
     latitude = models.FloatField('latitude')
     longitude = models.FloatField('longitude')
     created_at = models.DateTimeField('criado em', auto_now_add=True)

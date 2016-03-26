@@ -14,10 +14,11 @@ def compute_clusters():
     model = Birch(threshold=settings.THRESHOLD)
     model.fit(X)
 
-    return zip(model.subcluster_labels_, model.subcluster_centers_)
+    clusters = zip(model.subcluster_labels_, model.subcluster_centers_)
+    _update_clusters(clusters)
 
 
-def update_clusters(clusters):
+def _update_clusters(clusters):
     '''
     Updates cluster info on the database.
     '''
