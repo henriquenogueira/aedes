@@ -16,8 +16,12 @@ class Report(models.Model):
 
     latitude = models.FloatField('latitude')
     longitude = models.FloatField('longitude')
-    category = models.CharField('category', max_length=1, choices=REPORT_CATEGORIES)
+    category = models.CharField('categoria', max_length=1, choices=REPORT_CATEGORIES)
     reported_at = models.DateTimeField('reportado em', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'ocorrência'
+        verbose_name_plural = 'ocorrências'
 
     def __str__(self):
         return '({}, {}) - {}'.format(self.latitude, self.longitude, self.category)
