@@ -1,7 +1,8 @@
 AedeSpot
+========
+[![Build Status](https://travis-ci.org/henriquenogueira/aedes.svg?branch=master)](https://travis-ci.org/henriquenogueira/aedes)
 [![Code Health](https://landscape.io/github/henriquenogueira/aedes/master/landscape.svg?style=flat)](https://landscape.io/github/henriquenogueira/aedes/master)
 
-====================================
 
 Monitoramento da Dengue
 
