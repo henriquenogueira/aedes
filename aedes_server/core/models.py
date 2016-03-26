@@ -25,3 +25,20 @@ class Report(models.Model):
 
     def __str__(self):
         return '({}, {}) - {}'.format(self.latitude, self.longitude, self.category)
+
+
+class Cluster(models.Model):
+    '''
+    Represents a cluster into the database.
+    '''
+    label = models.IntegerField('etiquetta')
+    latitude = models.FloatField('latitude')
+    longitude = models.FloatField('longitude')
+    created_at = models.DateTimeField('criado em', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'centro de interesse'
+        verbose_name_plural = 'centros de interesse'
+
+    def __str__(self):
+        return '{} - ({}, {})'.format(self.label, self.latitude, self.longitude)

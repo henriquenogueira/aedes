@@ -113,3 +113,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'http://aedespot.s3-website-sa-east-1.amazonaws.com/'
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+
+########################################################################
+# Clustering parameters
+THRESHOLD = 0.0005
