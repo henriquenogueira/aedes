@@ -18,5 +18,11 @@
                 {% if not forloop.last %},{% endif %}
             {% endfor %}
         ], {radius: 25}).addTo(map);
+
+        // Adding cluster centers
+        {% for cluster in clusters %}
+            L.marker([{{ cluster.longitude|safe }}, {{ cluster.latitude|safe }}])
+                    .bindPopup('Região {{ cluster.label }}').addTo(map);
+        {% endfor %}
     </script>
 {% endblock %}

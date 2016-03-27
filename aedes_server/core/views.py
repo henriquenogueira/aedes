@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from .models import Report
+from .models import Report, Cluster
 
 
 def index(request):
     '''
     Renders the main map of the application
     '''
-    return render(request, 'map.html', {'reports': Report.objects.all()})
+    return render(request, 'map.html', {
+        'reports': Report.objects.all(),
+        'clusters': Cluster.objects.all()
+    })
