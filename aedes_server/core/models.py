@@ -35,6 +35,7 @@ class Cluster(models.Model):
     label = models.IntegerField('etiqueta', unique=True)
     latitude = models.FloatField('latitude')
     longitude = models.FloatField('longitude')
+    address = models.CharField('endereço', max_length=512, blank=True)
     created_at = models.DateTimeField('criado em', auto_now_add=True)
 
     class Meta:
@@ -43,4 +44,4 @@ class Cluster(models.Model):
         verbose_name_plural = 'centros de interesse'
 
     def __str__(self):
-        return '{} - ({}, {})'.format(self.label, self.latitude, self.longitude)
+        return '{} - ({}, {}) - {}'.format(self.label, self.latitude, self.longitude, self.address)
