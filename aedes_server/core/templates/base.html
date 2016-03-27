@@ -1,11 +1,40 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+    <title>{% block title %}Aedespot{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/leaflet.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aedes.css' %}"/>
 </head>
+
 <body>
 
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Aedespot</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">Mapa</a></li>
+            <li><a href="#">Centros de interesse</a></li>
+            <li><a href="#">Sobre</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Mapa</a></li>
+            <li><a href="#">Centros de interesse</a></li>
+            <li><a href="#">Sobre</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/materialize.js' %}"></script>
+<script src="{% static 'js/leaflet.js' %}"></script>
+
+{% block localjs %}
+{% endblock %}
 </body>
+
 </html>

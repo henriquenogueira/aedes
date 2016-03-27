@@ -6,6 +6,7 @@ from ..checks import check_threshold
 
 class SystemCheckTest(TestCase):
     def setUp(self):
+        # Removing THRESHOLD from settings
         delattr(settings, 'THRESHOLD')
         self.errors = check_threshold(CoreConfig)
 
@@ -18,4 +19,5 @@ class SystemCheckTest(TestCase):
         self.assertEqual('aedes.e_001', self.errors[0].id)
 
     def tearDown(self):
+        # Re-adding THRESHOLD to settings
         setattr(settings, 'THRESHOLD', 0.0005)
