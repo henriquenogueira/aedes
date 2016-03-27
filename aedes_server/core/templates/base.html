@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
     <title>{% block title %}Aedespot{% endblock %}</title>
-    <link rel='shortcut icon' href='{% static 'images/favicon.ico' %}' type='image/x-icon'/ >
+    <link rel='shortcut icon' href='{% static 'images/favicon.ico' %}' type='image/x-icon'
+    / >
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/leaflet.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
@@ -16,18 +17,20 @@
 <body>
 
 <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'core:index' %}"
-                                          class="brand-logo">Aedespot</a>
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="{% url 'core:index' %}" class="brand-logo">
+            Aedespot
+        </a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{% url 'core:index' %}">Mapa</a></li>
             <li><a href="#">Centros de interesse</a></li>
-            <li><a href="#">Sobre</a></li>
+            <li><a data-target="aboutModal" class="modal-trigger" href="#aboutModal">Sobre</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
             <li><a href="{% url 'core:index' %}">Mapa</a></li>
             <li><a href="#">Centros de interesse</a></li>
-            <li><a href="#">Sobre</a></li>
+            <li><a data-target="aboutModal" class="modal-trigger" href="#aboutModal">Sobre</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -35,12 +38,39 @@
 
 {% block content %}{% endblock %}
 
+<!-- About Modal-->
+<div id="aboutModal" class="modal">
+    <div class="modal-content">
+        <h4>Sobre Aedespot</h4>
+        <p>
+            O <b>Aedespot</b> foi criado com o intuito de ajudar no combate ao <i>Aedes aegypti</i>.
+            Para qualquer dúvida, crítica ou sugestão, entre em <a href="mailto:hrqnogueira@gmail.com">contato</a>.
+            Seu e-mail será respondido o mais rápido possível.
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">
+            Fechar
+        </a>
+    </div>
+</div>
+
+
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/materialize.js' %}"></script>
 <script src="{% static 'js/aedes.js' %}"></script>
 <script src="{% static 'js/leaflet.js' %}"></script>
 <script src="{% static 'js/simpleheat.js' %}"></script>
 <script src="{% static 'js/heatmap.js' %}"></script>
+
+<!-- About modal control -->
+<script>
+    $(document).ready(function () {
+        $('.modal-trigger').click(function () {
+            $('#aboutModal').openModal();
+        });
+    });
+</script>
 
 {% block localjs %}
 {% endblock %}

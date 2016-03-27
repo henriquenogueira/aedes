@@ -22,3 +22,6 @@ class IndexTest(TestCase):
         '''Map should be displayed on index.'''
         self.assertContains(self.resp, 'id="map"')
 
+    def test_about_modal(self):
+        '''About modal should be present.'''
+        self.assertContains(self.resp, 'id="aboutModal"')
