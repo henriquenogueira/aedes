@@ -23,7 +23,7 @@ class ReportCreateApiTest(test.APITestCase):
         Auxiliary method for asserting requests status codes
         based on sent data.
         '''
-        response = self.client.post(r('report-list'), data, format='json')
+        response = self.client.post(r('api:report-list'), data, format='json')
         self.assertEqual(response.status_code, expected_code)
 
 
@@ -34,8 +34,8 @@ class ReportListApiTest(test.APITestCase):
             {'latitude': 23, 'longitude': 42, 'category': 'C'}
         )
         for d in self.fixture:
-            self.client.post(r('report-list'), d, format='json')
-        self.resp = self.client.get(r('report-list'))
+            self.client.post(r('api:report-list'), d, format='json')
+        self.resp = self.client.get(r('api:report-list'))
 
     def test_list_exists(self):
         '''GET on reports endpoint should return 200.'''

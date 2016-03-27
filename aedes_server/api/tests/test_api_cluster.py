@@ -1,7 +1,6 @@
+from aedes_server.core.models import Cluster
 from django.shortcuts import resolve_url as r
 from rest_framework import test, status
-
-from ..models import Cluster
 
 
 class ReportListApiTest(test.APITestCase):
@@ -12,7 +11,7 @@ class ReportListApiTest(test.APITestCase):
         )
         for d in self.fixture:
             Cluster.objects.create(**d)
-        self.resp = self.client.get(r('cluster-list'))
+        self.resp = self.client.get(r('api:cluster-list'))
 
     def test_list_exists(self):
         '''GET on reports endpoint should return 200.'''

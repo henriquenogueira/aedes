@@ -1,5 +1,5 @@
+from aedes_server.core.models import Report, Cluster
 from rest_framework import serializers
-from .models import Report, Cluster
 
 
 class ReportSerializer(serializers.HyperlinkedModelSerializer):
