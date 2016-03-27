@@ -21,8 +21,8 @@
 
         // Adding cluster centers
         {% for cluster in clusters %}
-            L.marker([{{ cluster.longitude|safe }}, {{ cluster.latitude|safe }}])
-                    .bindPopup('<b>Região {{ cluster.label }}</b><br>{{ cluster.address }}').addTo(map);
+            L.marker([{{ cluster.latitude|safe }}, {{ cluster.longitude|safe }}])
+                    .bindPopup({% include 'cluster_info.html' %}).addTo(map);
         {% endfor %}
     </script>
 {% endblock %}

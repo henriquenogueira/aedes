@@ -1,0 +1,7 @@
+{% spaceless %}
+'<b>Região {{ cluster.label }} - Urgência {{ cluster.score|floatformat:2 }}</b>
+{{ cluster.address|linebreaks }}
+<b>Focos:</b> {{ cluster.focus_count }} <br />
+<b>Criadouros:</b> {{ cluster.breeding_count }} <br />
+<b>Suspeitas:</b> {{ cluster.suspicion_count }}'
+{% endspaceless %}

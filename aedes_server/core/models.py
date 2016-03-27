@@ -36,12 +36,25 @@ class Cluster(models.Model):
     latitude = models.FloatField('latitude')
     longitude = models.FloatField('longitude')
     address = models.CharField('endereço', max_length=512, blank=True)
+    breeding_count = models.PositiveIntegerField('criadouros', default=0)
+    focus_count = models.PositiveIntegerField('foco', default=0)
+    suspicion_count = models.PositiveIntegerField('suspeita', default=0)
     created_at = models.DateTimeField('criado em', auto_now_add=True)
 
     class Meta:
         ordering = 'label',
         verbose_name = 'centro de interesse'
         verbose_name_plural = 'centros de interesse'
+
+    @property
+    def score(self):
+        '''Return urgency score for the cluster'''
+        count_sum = self.breeding_count + self.focus_count + self.suspicion_count
+        if count_sum == 0:
+            return 0
+
+        pounds = 0.2 * self.breeding_count + 0.3 * self.focus_count + 0.5 * self.suspicion_count
+        return pounds / count_sum
 
     def __str__(self):
         return '{} - ({}, {}) - {}'.format(self.label, self.latitude, self.longitude, self.address)

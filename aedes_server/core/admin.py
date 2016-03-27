@@ -8,7 +8,7 @@ class ReportModelAdmin(admin.ModelAdmin):
 
 
 class ClusterModelAdmin(admin.ModelAdmin):
-    list_display = ('label', 'latitude', 'longitude')
+    list_display = ('label', 'latitude', 'longitude', 'breeding_count', 'focus_count', 'suspicion_count')
     list_filter = ('label',)
 
 

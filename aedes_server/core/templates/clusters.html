@@ -12,13 +12,15 @@
             {% for cluster in clusters %}
                 <li>
                     <div class="collapsible-header">
-                        <i class="material-icons">place</i>Região {{ cluster.label }}
+                        <i class="material-icons">place</i>Região {{ cluster.label }} - Urgência <b>{{ cluster.score|floatformat:2 }}</b>
                     </div>
                     <div class="collapsible-body">
                         <p>
-                            <b>Latitude:</b> {{ cluster.latitude }} <br />
-                            <b>Longitude:</b> {{ cluster.longitude }} <br />
-                            <b>Endereço:</b> {{ cluster.address }}
+                            <b>Coordenadas:</b> ({{ cluster.latitude|floatformat:6 }}, {{ cluster.longitude|floatformat:6 }}) <br />
+                            <b>Endereço:</b> {{ cluster.address }} <br />
+                            <b>Focos:</b> {{ cluster.focus_count }} <br />
+                            <b>Criadouros:</b> {{ cluster.breeding_count }} <br />
+                            <b>Suspeitas:</b> {{ cluster.suspicion_count }}
                         </p>
                     </div>
                 </li>

@@ -19,4 +19,4 @@ class ClusterSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Cluster
-        fields = ('label', 'latitude', 'longitude', 'address')
+        fields = ('label', 'latitude', 'longitude', 'address', 'focus_count', 'breeding_count', 'suspicion_count')
