@@ -3,7 +3,7 @@ from .models import Report, Cluster
 
 
 class ReportModelAdmin(admin.ModelAdmin):
-    list_display = ('latitude', 'longitude', 'category')
+    list_display = ('id', 'latitude', 'longitude', 'category')
     list_filter = ('category',)
 
 

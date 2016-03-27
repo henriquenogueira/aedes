@@ -20,6 +20,7 @@ class Report(models.Model):
     reported_at = models.DateTimeField('reportado em', auto_now_add=True)
 
     class Meta:
+        ordering = '-id',
         verbose_name = 'ocorrência'
         verbose_name_plural = 'ocorrências'
 
@@ -37,6 +38,7 @@ class Cluster(models.Model):
     created_at = models.DateTimeField('criado em', auto_now_add=True)
 
     class Meta:
+        ordering = 'label',
         verbose_name = 'centro de interesse'
         verbose_name_plural = 'centros de interesse'
 
