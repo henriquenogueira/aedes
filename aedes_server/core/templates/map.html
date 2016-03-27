@@ -6,7 +6,17 @@
 
 {% block localjs %}
     <script>
-        var map = L.map('map').setView([-22.8319726, -47.0781874], 15);
+        var map = L.map('map').setView([-22.8308245, -47.0788849], 17);
+
+        // Initializing map
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+
+        // Plotting points as a heatmap
+        L.heatLayer([
+            {% for report in reports %}
+                [{{ report.latitude|safe }}, {{ report.longitude|safe }}, 1.0]
+                {% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ], {radius: 25}).addTo(map);
     </script>
 {% endblock %}
