@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Aedespot::Aglomerados
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3>Aglomerados</h3>
+
+        <ul class="collapsible popout" data-collapsible="accordion">
+            {% for cluster in clusters %}
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">place</i>Região {{ cluster.label }}
+                    </div>
+                    <div class="collapsible-body">
+                        <p>
+                            <b>Latitude:</b> {{ cluster.latitude }} <br />
+                            <b>Longitude:</b> {{ cluster.longitude }} <br />
+                            <b>Endereço:</b> {{ cluster.address }}
+                        </p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

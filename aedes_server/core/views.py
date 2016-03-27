@@ -10,3 +10,9 @@ def index(request):
         'reports': Report.objects.all(),
         'clusters': Cluster.objects.all()
     })
+
+
+def clusters(request):
+    return render(request, 'clusters.html', {
+        'clusters': Cluster.objects.all()
+    })
