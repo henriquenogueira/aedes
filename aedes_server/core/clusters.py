@@ -64,8 +64,8 @@ def _update_clusters(clusters, label_metrics):
     # Counting categories for each label
     counting = {}
     for label, categories in idx_categories.items():
-        breeding = len(list(filter(lambda c: c == 'C', categories)))
         focuses = len(list(filter(lambda c: c == 'F', categories)))
+        breeding = len(list(filter(lambda c: c == 'C', categories)))
         suspicions = len(list(filter(lambda c: c == 'S', categories)))
         counting[label] = {
             'breeding': breeding,

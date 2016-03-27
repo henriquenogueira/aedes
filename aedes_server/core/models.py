@@ -53,7 +53,7 @@ class Cluster(models.Model):
         if count_sum == 0:
             return 0
 
-        pounds = 0.2 * self.breeding_count + 0.3 * self.focus_count + 0.5 * self.suspicion_count
+        pounds = 0.2 * self.focus_count + 0.3 * self.breeding_count + 0.5 * self.suspicion_count
         return pounds / count_sum
 
     def __str__(self):
