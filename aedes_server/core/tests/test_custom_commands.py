@@ -18,4 +18,4 @@ class CustomCommandTest(TestCase):
     def test_update_clusters(self):
         '''Compute cluster command should create clusters on database.'''
         call_command('compute_clusters')
-        self.assertEqual(3, Cluster.objects.count())
+        self.assertEqual(4, Cluster.objects.count())
