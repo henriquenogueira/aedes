@@ -2,7 +2,7 @@ from json import loads
 
 from django.conf import settings
 from requests import get
-from sklearn.cluster import Birch
+from sklearn.cluster import KMeans as ClusterClass
 from .models import Report, Cluster
 
 COORDINATE_FORMAT = '{0:.6f}'
@@ -16,14 +16,15 @@ def compute_clusters():
     data = Report.objects.all().values('latitude', 'longitude', 'category')
     X = [(d['latitude'], d['longitude']) for d in data]
 
-    model = Birch(threshold=settings.THRESHOLD)
+    model = ClusterClass(n_clusters=4)
 
     # Getting metrics for each cluster
     labels = model.fit_predict(X)
     categories = [d['category'] for d in data]
     label_metrics = zip(labels, categories)
 
-    clusters = zip(model.subcluster_labels_, model.subcluster_centers_)
+    clusters = zip(list(set(model.labels_)), model.cluster_centers_)
+
     _update_clusters(clusters, label_metrics)
 
 
