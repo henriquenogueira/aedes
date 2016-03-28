@@ -1,12 +1,13 @@
 from json import loads
 
-from django.conf import settings
 from requests import get
-from sklearn.cluster import KMeans as ClusterClass
+from sklearn.cluster import MeanShift, estimate_bandwidth
 from .models import Report, Cluster
+import numpy as np
 
 COORDINATE_FORMAT = '{0:.6f}'
 GOOGLE_API_BASE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng={},{}'
+
 
 def compute_clusters():
     '''
@@ -14,9 +15,9 @@ def compute_clusters():
     on the database.
     '''
     data = Report.objects.all().values('latitude', 'longitude', 'category')
-    X = [(d['latitude'], d['longitude']) for d in data]
+    X = np.array([np.array([d['latitude'], d['longitude']]) for d in data])
 
-    model = ClusterClass(n_clusters=4)
+    model = MeanShift(bandwidth=0.001)
 
     # Getting metrics for each cluster
     labels = model.fit_predict(X)
