@@ -7,6 +7,7 @@ AedeSpot
 Monitoramento da Dengue.
 
 * O site pode ser acessado [aqui](http://aedespot.herokuapp.com/).
+* O app Android está [aqui](https://s3-sa-east-1.amazonaws.com/aedespot/bin/Aedespot.apk).
 * Os endpoints da API REST estão [aqui](http://aedespot.herokuapp.com/api/).
 * A interface de administração está [aqui](http://aedespot.herokuapp.com/admin/).
 
