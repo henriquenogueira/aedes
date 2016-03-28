@@ -43,8 +43,8 @@ class Cluster(models.Model):
 
     class Meta:
         ordering = 'label',
-        verbose_name = 'centro de interesse'
-        verbose_name_plural = 'centros de interesse'
+        verbose_name = 'aglomerado'
+        verbose_name_plural = 'aglomerados'
 
     @property
     def score(self):
