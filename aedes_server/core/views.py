@@ -14,5 +14,5 @@ def index(request):
 
 def clusters(request):
     return render(request, 'clusters.html', {
-        'clusters': Cluster.objects.all()
+        'clusters': sorted(Cluster.objects.all(), key=lambda c: -c.score)
     })
