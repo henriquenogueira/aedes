@@ -1,15 +1,40 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
     <div id="map" style="height: 89%;"></div>
 {% endblock %}
 
 {% block localjs %}
+
     <script>
-        var map = L.map('map').setView([-22.8308245, -47.0788849], 18);
+        var initial_coords = [-13.4095972, -53.8941599];
+        var initial_zoom = 5;
+        var target_zoom = 14;
+
+        var map = L.map('map').setView(initial_coords, initial_zoom);
 
         // Initializing map
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {}).addTo(map);
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(setPosition);
+        } else {
+            alert('Não foi possível achar você no mapa.');
+        }
+
+        function setPosition(position) {
+            var user_position = [position.coords.latitude, position.coords.longitude];
+            map.panTo(user_position, {animate: true, duration: 1});
+
+            // Zooming into user's location
+            function zoom() {
+                map.zoomIn(3, {animate: true});
+            }
+            
+            setTimeout(zoom, 1000);
+            setTimeout(zoom, 1500);
+            setTimeout(zoom, 2000);
+        }
 
         // Plotting points as a heatmap
         L.heatLayer([

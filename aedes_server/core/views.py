@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Report, Cluster
 
+from requests import get
 
 def index(request):
     '''
