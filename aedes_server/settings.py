@@ -116,4 +116,4 @@ STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
 ########################################################################
 # Clustering parameters
-THRESHOLD = 0.0005
+THRESHOLD = 0.001
