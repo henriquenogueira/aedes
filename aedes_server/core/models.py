@@ -17,6 +17,7 @@ class Report(models.Model):
     latitude = models.FloatField('latitude')
     longitude = models.FloatField('longitude')
     category = models.CharField('categoria', max_length=1, choices=REPORT_CATEGORIES)
+    device_id = models.CharField('ID do aparelho', max_length=255)
     reported_at = models.DateTimeField('reportado em', auto_now_add=True)
 
     class Meta:

@@ -9,6 +9,7 @@ class ReportModelTest(TestCase):
         self.report = Report.objects.create(
             latitude=-22.5,
             longitude=-43.1,
+            device_id='DEVICE ID #123',
             category='C'
         )
 
@@ -19,3 +20,11 @@ class ReportModelTest(TestCase):
     def test_report_date(self):
         '''Instances should contain a report date.'''
         self.assertIsInstance(self.report.reported_at, datetime)
+
+    def test_device_id(self):
+        '''Make sure there is a Device ID on row'''
+        self.assertTrue(hasattr(self.report, 'device_id'))
+
+    def test_device_str(self):
+        '''Device ID should be a string'''
+        self.assertIsInstance(self.report.device_id, str)
