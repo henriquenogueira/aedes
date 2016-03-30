@@ -30,6 +30,7 @@ THIRD_PARTY_APPS = [
     'django_extensions',
     'rest_framework',
     'test_without_migrations',
+    'storages',
 ]
 
 LOCAL_APPS = [
@@ -98,21 +99,24 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ########################################################################
 # Internationalization
-
 LANGUAGE_CODE = 'pt-br'
-
 TIME_ZONE = 'America/Sao_Paulo'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 ########################################################################
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'http://aedespot.s3-website-sa-east-1.amazonaws.com/'
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+########################################################################
+# AWS S3 credentials
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 
 ########################################################################
 # Clustering parameters

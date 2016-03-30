@@ -16,8 +16,9 @@ class Report(models.Model):
 
     latitude = models.FloatField('latitude')
     longitude = models.FloatField('longitude')
-    category = models.CharField('categoria', max_length=1, choices=REPORT_CATEGORIES)
+    photo = models.ImageField('foto', upload_to='/upload/%Y/%m/%d/', null=True)
     device_id = models.CharField('ID do aparelho', max_length=255)
+    category = models.CharField('categoria', max_length=1, choices=REPORT_CATEGORIES)
     reported_at = models.DateTimeField('reportado em', auto_now_add=True)
 
     class Meta:
