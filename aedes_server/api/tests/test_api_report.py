@@ -1,4 +1,4 @@
-from aedes_server.tests.utils import generate_image
+from aedes_server.tests.utils import generate_test_image
 from django.shortcuts import resolve_url as r
 from rest_framework import test, status
 
@@ -46,7 +46,7 @@ class ReportCreateApiTest(test.APITestCase):
     def test_report_photo(self):
         '''POST with photos should work'''
         data = {'latitude': 22, 'longitude': 43, 'category': 'F',
-                'device_id': 'DEVICE 1', 'photo': generate_image()}
+                'device_id': 'DEVICE 1', 'photo': generate_test_image()}
 
         response = self.client.post(r('api:report-list'), data, format='multipart')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from aedes_server.tests.utils import generate_image
+from aedes_server.tests.utils import generate_test_image
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from ..models import Report
@@ -69,7 +69,7 @@ class PhotoModelTest(TestCase):
         Auxiliary method that generates a random image
         '''
 
-        tmp_file = generate_image()
+        tmp_file = generate_test_image()
 
         img = SimpleUploadedFile(
             name=tmp_file.name,

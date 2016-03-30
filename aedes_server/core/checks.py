@@ -16,3 +16,25 @@ def check_threshold(app_configs, **kwargs):
             id='aedes.e_001'
         ))
     return errors
+
+
+@register
+def check_aws_credentials(app_configs, **kwargs):
+    '''
+    Checks if THRESHOLD is set on settings.py
+    '''
+    errors = []
+    expected = ('AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_STORAGE_BUCKET_NAME')
+
+    for exp in expected:
+        if not hasattr(settings, exp):
+            errors.append(Error(
+                'settings must contain AWS credentials',
+                hint='Add AWS credentials to your settings.py file',
+                obj=settings,
+                id='aedes.e_002'
+            ))
+    return errors
+
+
+
