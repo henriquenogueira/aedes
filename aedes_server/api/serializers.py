@@ -9,7 +9,7 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Report
-        fields = ('latitude', 'longitude', 'category', 'device_id')
+        fields = ('latitude', 'longitude', 'category', 'device_id', 'photo')
 
 
 class ClusterSerializer(serializers.HyperlinkedModelSerializer):
@@ -19,4 +19,5 @@ class ClusterSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Cluster
-        fields = ('label', 'latitude', 'longitude', 'address', 'focus_count', 'breeding_count', 'suspicion_count')
+        fields = ('label', 'latitude', 'longitude', 'address', 'focus_count',
+                  'breeding_count', 'suspicion_count')
