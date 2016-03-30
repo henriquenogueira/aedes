@@ -121,3 +121,7 @@ AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 ########################################################################
 # Clustering parameters
 THRESHOLD = 0.001
+
+########################################################################
+# Test runner
+TEST_RUNNER = 'aedes_server.tests.runner.LocalTestSuiteRunner'

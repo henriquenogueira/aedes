@@ -1,3 +1,4 @@
+from aedes_server.tests.utils import generate_image
 from django.shortcuts import resolve_url as r
 from rest_framework import test, status
 
@@ -5,7 +6,8 @@ from rest_framework import test, status
 class ReportCreateApiTest(test.APITestCase):
     def test_report_create(self):
         '''POST requests on endpoint with valid data should create object.'''
-        data = {'latitude': 22, 'longitude': 43, 'category': 'F', 'device_id': 'DEVICE 1'}
+        data = {'latitude': 22, 'longitude': 43, 'category': 'F',
+                'device_id': 'DEVICE 1'}
         self.assertCodeForData(data, status.HTTP_201_CREATED)
 
     def test_report_create_error_type(self):
@@ -22,6 +24,32 @@ class ReportCreateApiTest(test.APITestCase):
         '''Report should contain a device ID'''
         data = {'latitude': 22, 'longitude': 43, 'category': 'F'}
         self.assertCodeForData(data, status.HTTP_400_BAD_REQUEST)
+
+    def test_report_comment(self):
+        '''POST requests on endpoint with valid data should create object.'''
+        data = {'latitude': 22, 'longitude': 43, 'category': 'F',
+                'device_id': 'DEVICE 1', 'comment': 'Comentário'}
+        self.assertCodeForData(data, status.HTTP_201_CREATED)
+
+    def test_report_comment_empty(self):
+        '''POST requests on endpoint with valid data should create object.'''
+        data = {'latitude': 22, 'longitude': 43, 'category': 'F',
+                'device_id': 'DEVICE 1', 'comment': ''}
+        self.assertCodeForData(data, status.HTTP_201_CREATED)
+
+    def test_report_comment_none(self):
+        '''POST requests on endpoint with valid data should create object.'''
+        data = {'latitude': 22, 'longitude': 43, 'category': 'F',
+                'device_id': 'DEVICE 1', 'comment': None}
+        self.assertCodeForData(data, status.HTTP_400_BAD_REQUEST)
+
+    def test_report_photo(self):
+        '''POST with photos should work'''
+        data = {'latitude': 22, 'longitude': 43, 'category': 'F',
+                'device_id': 'DEVICE 1', 'photo': generate_image()}
+
+        response = self.client.post(r('api:report-list'), data, format='multipart')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def assertCodeForData(self, data, expected_code):
         '''
