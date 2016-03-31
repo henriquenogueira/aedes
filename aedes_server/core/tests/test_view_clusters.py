@@ -1,5 +1,6 @@
 from django.shortcuts import resolve_url as r
 from django.test import TestCase
+from ..models import Cluster
 
 
 class ClustersTest(TestCase):
@@ -16,4 +17,9 @@ class ClustersTest(TestCase):
 
     def test_context(self):
         '''GET clusters page should have cluster context.'''
-        self.resp
+        self.assertIn('clusters', self.resp.context)
+
+    def test_context_type(self):
+        '''Context of the view should be of type Cluster'''
+        l = self.resp.context['clusters']
+        self.assertIs(list, type(l))
