@@ -27,7 +27,7 @@ class AWSSystemCheckTest(TestCase):
     def setUp(self):
         self._original_id = settings.AWS_ACCESS_KEY_ID
         self._original_secret = settings.AWS_SECRET_ACCESS_KEY
-        self._original_buck = settings.AWS_STORAGE_BUCKET_NAME
+        self._original_bucket = settings.AWS_STORAGE_BUCKET_NAME
 
         delattr(settings, 'AWS_ACCESS_KEY_ID')
         delattr(settings, 'AWS_SECRET_ACCESS_KEY')
@@ -35,10 +35,16 @@ class AWSSystemCheckTest(TestCase):
 
         self.errors = check_aws_credentials(CoreConfig)
 
-        def test_credentials_missing(self):
-            '''Error list should not be empty'''
-            self.assertNotEqual(0, len(self.errors))
+    def test_credentials_missing(self):
+        '''Error list should not be empty'''
+        self.assertNotEqual(0, len(self.errors))
 
-        def test_credentials_error_code(self):
-            '''Error code must be e_002.'''
-            self.assertEqual('aedes.e_002', self.errors[0].id)
+    def test_credentials_error_code(self):
+        '''Error code must be e_002.'''
+        self.assertEqual('aedes.e_002', self.errors[0].id)
+
+    def tearDown(self):
+        # Re-adding AWS credentials to settings
+        setattr(settings, 'AWS_ACCESS_KEY_ID', self._original_id)
+        setattr(settings, 'AWS_SECRET_ACCESS_KEY', self._original_secret)
+        setattr(settings, 'AWS_STORAGE_BUCKET_NAME', self._original_bucket)
