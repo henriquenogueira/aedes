@@ -1,0 +1,27 @@
+<div class="col s12 m6">
+    <div class="card">
+        <div class="card-image">
+
+            <!-- Report photo -->
+            {% if report.photo %}
+                <img src="{{ report.photo.url }}" style="max-height: 150px; max-width: 350px;">
+            {% else %}
+                <img src="http://placehold.it/350x150" style="max-height: 150px; max-width: 350px;">
+            {% endif %}
+
+            <!-- Report category -->
+            <span class="card-title">
+                {{ report.get_category_display }}
+            </span>
+        </div>
+
+        <div class="card-content">
+            <p>
+                <b>{{ report.get_category_display }}</b> reportado às {{ report.reported_at }}.
+            </p>
+        </div>
+        <div class="card-action">
+            <a href="#">Detalhes</a>
+        </div>
+    </div>
+</div>
