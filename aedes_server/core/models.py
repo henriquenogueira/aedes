@@ -11,7 +11,9 @@ class Report(models.Model):
     REPORT_CATEGORIES = (
         ('F', 'Foco'),  # Represents a potential place where aedes can appear
         ('C', 'Criadouro'),  # Represents aedes' larva on a spot
-        ('S', 'Suspeita')  # Someone near feeling symptons of aedes-transmitted diseases
+        ('SD', 'Suspeita de dengue'),  # Someone near feeling symptoms of dengue
+        ('SZ', 'Suspeita de zika'),  # Someone near feeling symptoms of zika
+        ('SC', 'Suspeita de chikungunya'),  # Someone near feeling symptoms of chikungunya
     )
 
     latitude = models.FloatField('latitude')
@@ -19,7 +21,7 @@ class Report(models.Model):
     photo = models.ImageField('foto', upload_to='upload/%Y/%m/%d/', blank=True)
     device_id = models.CharField('ID do aparelho', max_length=255)
     comment = models.TextField('comentário', blank=True, default='')
-    category = models.CharField('categoria', max_length=1, choices=REPORT_CATEGORIES)
+    category = models.CharField('categoria', max_length=2, choices=REPORT_CATEGORIES)
     resolved = models.BooleanField('resolvido', default=False)
     reported_at = models.DateTimeField('reportado em', auto_now_add=True)
 

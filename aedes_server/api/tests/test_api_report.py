@@ -6,7 +6,7 @@ from rest_framework import test, status
 class ReportCreateApiTest(test.APITestCase):
     def test_report_create(self):
         '''POST requests on endpoint with valid data should create object.'''
-        data = {'latitude': 22, 'longitude': 43, 'category': 'F',
+        data = {'latitude': 22, 'longitude': 43, 'category': 'SD',
                 'device_id': 'DEVICE 1'}
         self.assertCodeForData(data, status.HTTP_201_CREATED)
 
