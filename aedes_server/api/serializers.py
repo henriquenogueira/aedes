@@ -9,7 +9,8 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Report
-        fields = ('latitude', 'longitude', 'category', 'device_id', 'photo', 'comment')
+        fields = 'latitude', 'longitude', 'category', 'device_id', 'photo', 'comment', 'resolved'
+        read_only_fields = 'resolved', 'reported_at'
 
 
 class ClusterSerializer(serializers.HyperlinkedModelSerializer):

@@ -51,6 +51,19 @@ class ReportCreateApiTest(test.APITestCase):
         response = self.client.post(r('api:report-list'), data, format='multipart')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+    def test_report_has_resolved(self):
+        '''POST must be created with a resolved value.'''
+        data = {'latitude': 22, 'longitude': 43, 'category': 'F', 'device_id': 'DEVICE 1'}
+        response = self.client.post(r('api:report-list'), data)
+        self.assertIn('resolved', response.data)
+
+    def test_resolved_read_only(self):
+        '''Fields resolved and reported_at should be read only.'''
+        data = {'latitude': 22, 'longitude': 43, 'category': 'F',
+                'device_id': 'DEVICE 1'}
+        response = self.client.post(r('api:report-list'), data)
+        self.assertEqual(False, response.data['resolved'])
+
     def assertCodeForData(self, data, expected_code):
         '''
         Auxiliary method for asserting requests status codes

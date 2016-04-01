@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from aedes_server.tests.utils import generate_test_image
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -23,6 +23,10 @@ class ReportModelTest(TestCase):
         '''Instances should contain a report date.'''
         self.assertIsInstance(self.report.reported_at, datetime)
 
+    def test_report_date_auto_now(self):
+        '''Reported_at should contain current timestamp.'''
+        self.assertLess(datetime.now(timezone.utc) + timedelta(seconds=-5), self.report.reported_at)
+
     def test_device_id(self):
         '''Make sure there is a Device ID on row'''
         self.assertTrue(hasattr(self.report, 'device_id'))
@@ -34,6 +38,10 @@ class ReportModelTest(TestCase):
     def test_comment_none(self):
         '''Comment should be None'''
         self.assertEqual('', self.report.comment)
+
+    def test_has_resolved_flag(self):
+        '''Reports should have default flag set to False by default.'''
+        self.assertEqual(False, self.report.resolved)
 
 
 class PhotoModelTest(TestCase):

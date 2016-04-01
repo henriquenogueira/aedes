@@ -12,6 +12,14 @@
             <!-- Report category -->
             <span class="card-title">
                 {{ report.get_category_display }}
+
+                <span class="left-align">
+                    {% if report.resolved %}
+                        <i class="small material-icons light-green-text">done</i>
+                    {% else %}
+                        <i class="small material-icons red-text">report_problem</i>
+                    {% endif %}
+                </span>
             </span>
         </div>
 
